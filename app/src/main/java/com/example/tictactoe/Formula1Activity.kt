@@ -1,13 +1,16 @@
 package com.example.tictactoe
 
-import android.R
+import android.content.ClipData
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.get
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -16,12 +19,19 @@ import org.json.JSONArray
 
 class Formula1Activity : AppCompatActivity() {
     private lateinit var binding: ActivityFormula1Binding
+    var drivers = mutableListOf<Driver>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormula1Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        loadFromURL()
 
+        loadFromURL()
+        binding.listaDrivers.setOnItemClickListener{adapter, view, i, l ->
+            val piloto = drivers[i]
+            val intent = Intent(this, DriverViewActivity::class.java)
+            intent.putExtra("piloto", piloto)
+            startActivity(intent)
+        }
     }
 
     fun loadFromURL() {
@@ -30,7 +40,6 @@ class Formula1Activity : AppCompatActivity() {
         val path = "drivers"
         val query = "?session_key=9684" //Testing 2025
         val req = StringRequest(url + path + query, Response.Listener() {
-            var drivers = mutableListOf<Driver>()
             val data = it
             Log.i("RESTF1", data)
             var json = JSONArray(data)
@@ -41,11 +50,11 @@ class Formula1Activity : AppCompatActivity() {
                 val acronym = jsonObject.getString("name_acronym")
                 val tName = jsonObject.getString("team_name")
                 val color = jsonObject.getString("team_colour")
-
-                val driver = Driver(name, country,acronym,tName,color)
+                val headshot = jsonObject.getString("headshot_url")
+                val driver = Driver(name, country,acronym,tName,color, headshot)
                 drivers.add(driver)
             }
-            val adapter = ArrayAdapter<Driver>(this, R.layout.simple_list_item_1, drivers)
+            val adapter = DriverAdapter(this, R.layout.listadrivers, drivers)
             binding.listaDrivers.adapter = adapter
         }, {
             Log.e("RESTF1", "Error in F1 API Request ${it.cause}")

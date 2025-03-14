@@ -1,9 +1,14 @@
 package com.example.tictactoe
 
-class Driver (
-    private val fullName : String,
-    private val countryCode : String,
-    private val nameAcronym : String,
-    private val teamName : String,
-    private val teamColor : String
-)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Driver(
+    val fullName: String,
+    val countryCode: String,
+    val nameAcronym: String,
+    val teamName: String,
+    val teamColor: String,
+    val headShotURL: String
+) : Parcelable

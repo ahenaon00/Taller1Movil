@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="PLAYER ONE (X)"
+        android:text="@string/player_one"
         android:textColor="#30e63f"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,6 @@
             android:layout_weight="1"
 
             android:orientation="horizontal">
-
 
             <Button
                 android:id="@+id/button0"
@@ -128,7 +127,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="130dp"
         android:gravity="center"
-        android:text="PLAYER TWO (O)"
+        android:text="@string/player_two"
         android:textColor="#30e63f"
         android:textSize="25dp" />
 
@@ -137,7 +136,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#00FFFFFF"
-        android:text="New Game"
+        android:text="@string/new_game"
         android:textColor="#33C1D7"
         android:textSize="20dp" />
 

@@ -18,9 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         escucharTriqui(binding)
-
     }
-
     fun escucharTriqui(binding: ActivityMainBinding){
         var listaVictoria: List<Int>?
         var turno: Boolean = true
@@ -286,7 +284,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mostrarVictoria(binding : ActivityMainBinding, listaVictoria : List<Int>?) {
-
         val botones = listOf(
             binding.button0, binding.button1, binding.button2,
             binding.button3, binding.button4, binding.button5,

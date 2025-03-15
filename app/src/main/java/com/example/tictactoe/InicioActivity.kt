@@ -22,4 +22,5 @@ class InicioActivity : AppCompatActivity() {
             startActivity(Intent(baseContext, Formula1Activity::class.java))
         }
     }
+
 }

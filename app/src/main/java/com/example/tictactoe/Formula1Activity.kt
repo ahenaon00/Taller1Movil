@@ -24,7 +24,6 @@ class Formula1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFormula1Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
         loadFromURL()
         binding.listaDrivers.setOnItemClickListener{adapter, view, i, l ->
             val piloto = drivers[i]
@@ -59,7 +58,6 @@ class Formula1Activity : AppCompatActivity() {
         }, {
             Log.e("RESTF1", "Error in F1 API Request ${it.cause}")
         })
-
         queue.add(req)
     }
 }

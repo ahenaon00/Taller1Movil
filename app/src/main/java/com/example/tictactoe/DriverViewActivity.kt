@@ -1,7 +1,6 @@
 package com.example.tictactoe
 
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide

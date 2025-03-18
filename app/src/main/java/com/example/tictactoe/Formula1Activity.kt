@@ -27,7 +27,7 @@ class Formula1Activity : AppCompatActivity() {
         loadFromURL()
         binding.listaDrivers.setOnItemClickListener{adapter, view, i, l ->
             val piloto = drivers[i]
-            val intent = Intent(this, DriverViewActivity::class.java)
+            val intent = Intent(baseContext, DriverViewActivity::class.java)
             intent.putExtra("piloto", piloto)
             startActivity(intent)
         }
@@ -37,7 +37,7 @@ class Formula1Activity : AppCompatActivity() {
         val queue = Volley.newRequestQueue(this)
         var url = "https://api.openf1.org/v1/"
         val path = "drivers"
-        val query = "?session_key=9684" //Testing 2025
+        val query = "?session_key=9684"
         val req = StringRequest(url + path + query, Response.Listener() {
             val data = it
             Log.i("RESTF1", data)

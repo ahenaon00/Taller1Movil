@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        escucharTriqui(binding)
+        escucharTriqui()
     }
-    fun escucharTriqui(binding: ActivityMainBinding){
+    fun escucharTriqui(){
         var listaVictoria: List<Int>?
         var turno: Boolean = true
         val casillas = charArrayOf('n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n',)
